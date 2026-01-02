@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan | KumpulBaca</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="https://indorelawan-prod.nos.jkt-1.neo.id/uploads/user_avatar/5d5c0fa574a4d28921701b58.jpeg" class="logo">
+            KumpulBaca
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="profil.html">Profil</a></li>
+                <li class="nav-item"><a class="nav-link active" href="perpustakaan.html">Perpustakaan</a></li>
+                <li class="nav-item"><a class="nav-link" href="arsip.html">Arsip Diskusi</a></li>
+                <li class="nav-item"><a class="nav-link" href="agenda.html">Agenda</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="library-header mt-5">
+    <div class="container text-center pt-5">
+        <h1 class="fw-bold">Perpustakaan KumpulBaca</h1>
+        <p class="text-muted">Koleksi buku pilihan dari penulis lokal dan internasional</p>
+        
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="search-box p-2 shadow-sm">
+                    <i class="bi bi-search ms-2"></i>
+                    <input type="text" id="searchInput" placeholder="Cari judul atau penulis..." onkeyup="searchBook()">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="library-section py-4">
+    <div class="container">
+        <div class="filter-group mb-5 text-center" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="fiksi">Fiksi</button>
+            <button class="filter-btn" data-filter="non-fiksi">Non-Fiksi</button>
+            <button class="filter-btn" data-filter="pengembangan-diri">Pengembangan Diri</button>
+            <button class="filter-btn" data-filter="filsafat">Filsafat</button>
+        </div>
+
+        <div class="row g-4" id="bookGrid">
+            
+            <div class="col-lg-6 book-item" data-category="fiksi">
+                <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalBumiManusia">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1565658920i/1398034.jpg" alt="Bumi Manusia">
+                    <div class="book-content">
+                        <span class="bg-soft-blue mb-2">Fiksi</span>
+                        <h5>Bumi Manusia</h5>
+                        <small>Pramoedya Ananta Toer</small>
+                        <p class="text-truncate-2">Kisah Minke di masa kolonial Belanda dan perjuangannya melawan ketidakadilan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 book-item" data-category="non-fiksi">
+                <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalSapiens">
+                    <img src="https://covers.openlibrary.org/b/id/10523338-L.jpg" alt="Sapiens">
+                    <div class="book-content">
+                        <span class="bg-soft-blue mb-2">Non-Fiksi</span>
+                        <h5>Sapiens</h5>
+                        <small>Yuval Noah Harari</small>
+                        <p class="text-truncate-2">Sejarah singkat umat manusia dari revolusi kognitif hingga masa depan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 book-item" data-category="pengembangan-diri">
+                <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalAtomic">
+                    <img src="https://covers.openlibrary.org/b/id/11153256-L.jpg" alt="Atomic Habits">
+                    <div class="book-content">
+                        <span class="bg-soft-blue mb-2">Pengembangan Diri</span>
+                        <h5>Atomic Habits</h5>
+                        <small>James Clear</small>
+                        <p class="text-truncate-2">Membangun kebiasaan kecil untuk hasil yang luar biasa dalam jangka panjang.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 book-item" data-category="filsafat">
+                <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalFilosofiTeras">
+                    <img src="https://ebooks.gramedia.com/ebook-covers/106221/image_highres/BLK_FT21761806894098.jpg" alt="Filosofi Teras">
+                    <div class="book-content">
+                        <span class="bg-soft-blue mb-2">Filsafat</span>
+                        <h5>Filosofi Teras</h5>
+                        <small>Henry Manampiring</small>
+                        <p class="text-truncate-2">Penerapan stoisisme dalam kehidupan sehari-hari orang Indonesia modern.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 book-item" data-category="filsafat">
+                <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalDuniaSophie">
+                    <img src="https://m.media-amazon.com/images/I/8169n+03ixL._AC_UF1000,1000_QL80_.jpg" alt="Dunia Sophie">
+                    <div class="book-content">
+                        <span class="bg-soft-blue mb-2">Filsafat</span>
+                        <h5>Dunia Sophie</h5>
+                        <small>Jostein Gaarder</small>
+                        <p class="text-truncate-2">Sebuah novel sejarah filsafat yang membawa kita berpetualang mencari makna kehidupan.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modalBumiManusia" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-4 border-0 rounded-4">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1565658920i/1398034.jpg" class="img-fluid rounded-3 mb-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="fw-bold">Bumi Manusia</h2>
+                        <p class="text-muted">Karya: Pramoedya Ananta Toer</p>
+                        <hr>
+                        <h6>Sinopsis:</h6>
+                        <p>Roman ini berlatar belakang masa penjajahan Belanda, menceritakan tentang Minke, seorang pribumi yang cerdas dan berani melawan stigma kelas sosial.</p>
+                        <h6 class="mt-4">Diskusi Anggota:</h6>
+                        <div class="bg-light p-3 rounded-3">"Karakter Nyai Ontosoroh sangat kuat dan menginspirasi!" - <strong>Andi</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalSapiens" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-4 border-0 rounded-4">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="https://covers.openlibrary.org/b/id/10523338-L.jpg" class="img-fluid rounded-3 mb-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="fw-bold">Sapiens</h2>
+                        <p class="text-muted">Karya: Yuval Noah Harari</p>
+                        <hr>
+                        <h6>Sinopsis:</h6>
+                        <p>Buku ini menjelaskan bagaimana manusia (Homo Sapiens) berevolusi dan mendominasi dunia melalui Revolusi Kognitif, Agrikultur, dan Saintifik.</p>
+                        <h6 class="mt-4">Diskusi Anggota:</h6>
+                        <div class="bg-light p-3 rounded-3">"Sangat membuka mata tentang asal usul kepercayaan manusia." - <strong>Budi</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAtomic" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-4 border-0 rounded-4">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="https://covers.openlibrary.org/b/id/11153256-L.jpg" class="img-fluid rounded-3 mb-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="fw-bold">Atomic Habits</h2>
+                        <p class="text-muted">Karya: James Clear</p>
+                        <hr>
+                        <h6>Sinopsis:</h6>
+                        <p>Panduan praktis untuk membangun sistem kebiasaan kecil yang memberikan hasil luar biasa secara eksponensial dalam hidup.</p>
+                        <h6 class="mt-4">Diskusi Anggota:</h6>
+                        <div class="bg-light p-3 rounded-3">"Metode 1% lebih baik setiap hari sangat membantu saya konsisten." - <strong>Sari</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalFilosofiTeras" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-4 border-0 rounded-4">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="https://ebooks.gramedia.com/ebook-covers/106221/image_highres/BLK_FT21761806894098.jpg" class="img-fluid rounded-3 mb-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="fw-bold">Filosofi Teras</h2>
+                        <p class="text-muted">Karya: Henry Manampiring</p>
+                        <hr>
+                        <h6>Sinopsis:</h6>
+                        <p>Mengajarkan filsafat Stoisisme kuno untuk mengatasi emosi negatif dan menciptakan ketenangan pikiran dalam menghadapi masalah hidup.</p>
+                        <h6 class="mt-4">Diskusi Anggota:</h6>
+                        <div class="bg-light p-3 rounded-3">"Belajar membedakan hal yang bisa dikontrol dan tidak itu kuncinya." - <strong>Reza</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDuniaSophie" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-4 border-0 rounded-4">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="https://ebooks.gramedia.com/ebook-covers/1097/big_covers/ID_MIZ2013MTH01DS_B.jpg" class="img-fluid rounded-3 mb-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="fw-bold">Dunia Sophie</h2>
+                        <p class="text-muted">Karya: Jostein Gaarder</p>
+                        <hr>
+                        <h6>Sinopsis:</h6>
+                        <p>Kisah tentang seorang gadis remaja yang menerima surat misterius berisi pertanyaan filosofis, membawanya menelusuri sejarah pemikiran barat.</p>
+                        <h6 class="mt-4">Diskusi Anggota:</h6>
+                        <div class="bg-light p-3 rounded-3">"Cara terbaik belajar sejarah filsafat melalui sebuah cerita fiksi." - <strong>Luna</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fungsi Filter Kategori
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const bookItems = document.querySelectorAll('.book-item');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            bookItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Fungsi Search Judul
+    function searchBook() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        bookItems.forEach(item => {
+            let title = item.querySelector('h5').innerText.toLowerCase();
+            let author = item.querySelector('small').innerText.toLowerCase();
+            if (title.includes(input) || author.includes(input)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+</script>
+<footer class="footer-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-info">
+                    <a class="footer-logo d-flex align-items-center mb-3" href="index.html">
+                        <img src="https://indorelawan-prod.nos.jkt-1.neo.id/uploads/user_avatar/5d5c0fa574a4d28921701b58.jpeg" class="logo">
+                        <span class="ms-2">KumpulBaca</span>
+                    </a>
+                    <p>Membangun kebiasaan membaca yang berkelanjutan demi generasi penerus yang merdeka dalam pikiran dan perbuatan.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="footer-title">Navigasi</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="perpustakaan.html">Perpustakaan</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="#">Forum Diskusi</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="footer-title">Buku Populer</h5>
+                <ul class="footer-links">
+                    <li><a href="perpustakaan.html">Novel Fiksi</a></li>
+                    <li><a href="perpustakaan.html">Filsafat</a></li>
+                    <li><a href="perpustakaan.html">Self Dev</a></li>
+                    <li><a href="perpustakaan.html">Non-Fiksi</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <h5 class="footer-title">Berlangganan Info</h5>
+                <p>Dapatkan info agenda baca mingguan langsung di emailmu.</p>
+                <div class="subscribe-form mt-3">
+                    <input type="email" placeholder="Email kamu...">
+                    <button type="button"><i class="bi bi-send"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap">
+            <p class="mb-0">&copy; 2024 <strong>KumpulBaca</strong>. Hak Cipta Dilindungi.</p>
+            <button onclick="scrollToTop()" class="btn-top">
+                Ke Atas <i class="bi bi-arrow-up-short"></i>
+            </button>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
